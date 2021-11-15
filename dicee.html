@@ -35,12 +35,23 @@
           return Math.ceil(Math.random() * maxDiceValue);
         };
 
-        document.querySelector("h1").addEventListener("click", (e) => {
-          player1number = generateRandomNumber(6);
-          player2number = generateRandomNumber(6);
+        const setDiceImage = (playerNumber, playerDiceNumber) => {
+          document.querySelector(
+            `img.img${playerNumber}`
+          ).src = `images/dice${playerDiceNumber}.png`;
+        };
 
-          console.log(player1number, " - player 1");
-          console.log(player2number, " - player 2");
+        document.querySelector("h1").addEventListener("click", (e) => {
+          player1DiceNumber = generateRandomNumber(6);
+          player2DiceNumber = generateRandomNumber(6);
+
+          // Set the dice image for each player
+
+          // For player1
+          setDiceImage(1, player1DiceNumber);
+
+          // For player2
+          setDiceImage(2, player2DiceNumber);
         });
       })();
     </script>
