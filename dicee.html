@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Refresh Me</h1>
+      <h1 class="d-flex justify-content-center">Refresh Me</h1>
 
       <div class="dice">
         <p>Player 1</p>
@@ -30,6 +30,8 @@
         let player1Dice = 0;
         let player2Dice = 0;
 
+        const h1Selector = document.querySelector("h1");
+
         // This function generates a random number between 1 and 6
         const generateRandomNumber = (maxDiceValue) => {
           return Math.ceil(Math.random() * maxDiceValue);
@@ -41,7 +43,7 @@
           ).src = `images/dice${playerDiceNumber}.png`;
         };
 
-        document.querySelector("h1").addEventListener("click", (e) => {
+        h1Selector.addEventListener("click", (e) => {
           player1DiceNumber = generateRandomNumber(6);
           player2DiceNumber = generateRandomNumber(6);
 
@@ -52,6 +54,11 @@
 
           // For player2
           setDiceImage(2, player2DiceNumber);
+
+          //Display winner of the game in the h1 tag
+          h1Selector.innerHTML = `<div class="d-flex"><span>Player ${
+            player1DiceNumber > player2DiceNumber ? "1" : "2"
+          } Wins!</span> <span>🏅</span></div>`;
         });
       })();
     </script>
